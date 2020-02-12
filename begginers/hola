@@ -1,0 +1,16 @@
+
+# first we invite numpy over : import numpy
+# at the same time we give numpy the nickname np : as np
+import numpy as np
+
+# here is the data we want to investigate
+x = [1,3,6,2,8,4,1]
+
+# now that numpy (np) is here we can ask them to use their mean function
+x_mean = np.mean(x)
+# then we ask numpy to use its standard deviation function on the data
+x_standard_dev = np.std(x)
+
+# finally we will print the result
+print(x_mean)
+print(x_standard_dev)
