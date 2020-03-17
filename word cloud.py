@@ -93,3 +93,34 @@ driver.quit()
 
 # last_page_num = soup.find(class_="pagination-next").find_previous_sibling().text
 # print(last_page_num)
+
+#word cloud from a text file
+
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud, STOPWORDS
+
+stopwords = set(STOPWORDS)
+stopwords.update(["two", "using","found","different","o7"])## Create stopword list
+
+
+text=open ("abstracts.txt").read()
+
+wordcloud = WordCloud().generate(text)
+
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis("off")
+#That is a feature called 'collocations' in the word_cloud project. 
+#You can turn it off by setting collocations=False, like this:
+#wordcloud = WordCloud(collocations=False).generate(word_string)
+#This will get rid of words that are frequently grouped together in your text. 
+# It will get rid of some things you probably don't like, 
+# for instance, "oh oh" and it will get rid of some others that you may like, 
+# for instance, "black culture"
+wordcloud = WordCloud(stopwords=stopwords,width=800, height=400, background_color="white",min_font_size=4, max_font_size=40, random_state=0,repeat=False,relative_scaling=0,prefer_horizontal=.8,max_words=200,collocations=False).generate(text)
+plt.figure()
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.savefig('abstractcloud.png')
+
+
+
