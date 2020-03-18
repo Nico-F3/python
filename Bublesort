@@ -1,0 +1,16 @@
+#Buble sort
+
+def buble(array):
+    i=1
+    while i < len(array):
+        if array[i]<array[i-1]:
+            array[i],array[i-1]=array[i-1],array[i]
+            return buble(array)
+
+        else:
+            i+=1#short for i=i+1
+
+    return array
+
+
+
